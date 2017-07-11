@@ -70,7 +70,6 @@ int detectaFlanco(int pin) {
     }
   }
   else {
-    anterior_estado = estado;
     return 0;
   }
 }
