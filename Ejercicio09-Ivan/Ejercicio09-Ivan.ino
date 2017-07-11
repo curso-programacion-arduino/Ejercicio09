@@ -1,17 +1,23 @@
 #define pin 3 // pin de boton
 int flanco = 0; // variable para detectar cambios de estado
-
+#define led 4
 
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
   pinMode(pin, INPUT);
+  pinMode(led, OUTPUT);
+  digitalWrite(led,LOW);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  detectarFlanco(digitalRead(pin));
+  if (detectarFlanco(digitalRead(pin))){
+    digitalWrite(led,HIGH);
+  }else{
+    digitalWrite(led,LOW);
+  }
 }
 
 boolean detectarFlanco(boolean estado) { // funcion para detectar el cambio de estado del pin
