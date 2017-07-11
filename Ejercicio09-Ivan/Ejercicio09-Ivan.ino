@@ -11,19 +11,19 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  if (detectarFlanco(digitalRead(pin))) {
-    Serial.println(flanco);
-  }
+  detectarFlanco(digitalRead(pin));
 }
 
 boolean detectarFlanco(boolean estado) { // funcion para detectar el cambio de estado del pin
   if (estado == true && flanco == 0) {
     flanco = 1;
     //pulsaciones += 10;
+    Serial.println("Flanco ascendente!");
     return true;
   }
-  if (estado == false) { // si pin deja de estar high ponemos el flanco a 0
+  if (estado == false && flanco == 1) { // si pin deja de estar high ponemos el flanco a 0
     flanco = 0;
+    Serial.println("Flanco descendente!");
     return false;
   }
 }
