@@ -24,6 +24,7 @@ void loop() {
     Serial.println("Flanco ascendente");
   if (flanco == -1)
     Serial.println("Flanco descendente");
+    delay(100);
 }
 
 boolean detectaFlancoAscendente(int pin) {
@@ -73,4 +74,5 @@ int detectaFlanco(int pin) {
     anterior_estado = estado;
     return 0;
   }
+  anterior_estado = estado;
 }
